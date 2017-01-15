@@ -1,0 +1,1 @@
+var moduleB = require("./module-b");

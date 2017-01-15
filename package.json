@@ -1,41 +1,56 @@
 {
-    "name": "js-module-deps",
-    "displayName": "js-module-deps",
-    "description": "Javascript Module Dependencies Viewer",
-    "version": "0.0.1",
-    "publisher": "pjlevitt",
-    "engines": {
-        "vscode": "^1.5.0"
-    },
-    "categories": [
-        "Other"
+  "name": "browse-dependencies",
+  "displayName": "Browse Dependencies",
+  "description": "Javascript Module Dependencies Viewer",
+  "version": "0.0.1",
+  "publisher": "pjlevitt",
+  "engines": {
+    "vscode": "^1.5.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "activationEvents": [
+    "onCommand:extension.browseDependencies"
+  ],
+  "main": "./lib/index",
+  "contributes": {
+    "commands": [
+      {
+        "command": "extension.browseDependencies",
+        "title": "Show Dependencies..."
+      }
     ],
-    "activationEvents": [
-        "onCommand:extension.browseDependencies"
-    ],
-    "main": "./extension",
-    "contributes": {
-        "commands": [{
-            "command": "extension.browseDependencies",
-            "title": "Show Dependencies..."
-        }],
-        "menus": {
-            "explorer/context": [{
-                "when": "resourceLangId == javascript",
-                "command": "extension.browseDependencies"
-            }]
+    "menus": {
+      "explorer/context": [
+        {
+          "when": "resourceLangId == javascript",
+          "command": "extension.browseDependencies"
+        },
+        {
+          "when": "resourceLangId == javascriptreact",
+          "command": "extension.browseDependencies"
+        },
+        {
+          "when": "resourceLangId == jsx",
+          "command": "extension.browseDependencies"
         }
-    },
-    "scripts": {
-        "postinstall": "node ./node_modules/vscode/bin/install",
-        "test": "node ./node_modules/vscode/bin/test"
-    },
-    "devDependencies": {
-        "typescript": "^2.0.3",
-        "vscode": "^1.0.0",
-        "mocha": "^2.3.3",
-        "eslint": "^3.6.0",
-        "@types/node": "^6.0.40",
-        "@types/mocha": "^2.2.32"
+      ]
     }
+  },
+  "scripts": {
+    "postinstall": "node ./node_modules/vscode/bin/install",
+    "test": "node ./node_modules/vscode/bin/test"
+  },
+  "devDependencies": {
+    "typescript": "^2.0.3",
+    "vscode": "^1.0.0",
+    "mocha": "^2.3.3",
+    "eslint": "^3.6.0",
+    "@types/node": "^6.0.40",
+    "@types/mocha": "^2.2.32"
+  },
+  "dependencies": {
+    "dependency-tree": "5.7.6"
+  }
 }

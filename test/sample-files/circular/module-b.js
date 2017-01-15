@@ -1,0 +1,1 @@
+var moduleC = require("./module-c");
